@@ -46,15 +46,19 @@ body {
   padding-right: 1rem;
 }
 
-h1,
-h2 {
-  font-weight: 500;
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
 }
 
 h1 {
-  font-size: 3rem;
+  line-height: 1;
+  font-size: 3.5rem;
   @media (min-width: 64rem) {
-    font-size: 3.5rem;
+    font-size: 4rem;
   }
 }
 h2 {
@@ -62,4 +66,20 @@ h2 {
   @media (min-width: 64rem) {
     font-size: 2.5rem;
   }
+}
+h3 {
+  font-size: 1.5rem;
+  @media (min-width: 64rem) {
+    font-size: 2rem;
+  }
+}
+h4 {
+  font-size: 1.25rem;
+}
+h5 {
+  font-size: 1rem;
+}
+h6 {
+  font-size: .75rem;
+  text-transform: uppercase;
 }

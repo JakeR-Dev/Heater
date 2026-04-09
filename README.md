@@ -1,6 +1,6 @@
 # Heater
 
-Heater displays the most impactful player on each NHL team — a quick-glance look at who's driving results across the league.
+Heater displays the most impactful players on each NHL team — a quick-glance look at who's driving results across the league.
 
 ## Tech Stack
 

@@ -17,24 +17,9 @@ export async function getTeamStats(clubId) {
 
   try {
     const data = await response.json();
-    return getBestPlayers(data?.skaters);
+    return data?.skaters;
   } catch (error) {
     console.error('getTeamStats fetch error:', error);
   }
 }
 
-export function getBestPlayers(players) {
-  if (!players?.length) return [];
-
-  // sort players by points (goals + assists) descending
-  const sortedPlayers = [...players].sort((a, b) => {
-    const aPoints = (a?.goals || 0) + (a?.assists || 0);
-    const bPoints = (b?.goals || 0) + (b?.assists || 0);
-    return bPoints - aPoints;
-  });
-
-  // console.log('sortedPlayers: ', sortedPlayers);
-
-  // return top 3 players
-  return sortedPlayers.slice(0, 3);
-}

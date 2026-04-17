@@ -6,11 +6,9 @@ export default async function handler(req, res) {
     return res.status(204).end();
   }
 
-  const pathParts = req.query.path || [];
-  const path = Array.isArray(pathParts) ? pathParts.join("/") : pathParts;
-
-  const queryString = new URLSearchParams(req.query);
-  queryString.delete("path");
+  const url = new URL(req.url, `http://${req.headers.host}`);
+  const path = url.pathname.replace(/^\/api\/nhl\/?/, "");
+  const queryString = new URLSearchParams(url.search);
 
   const upstreamUrl =
     "https://api-web.nhle.com/" + path + (queryString.toString() ? "?" + queryString.toString() : "");

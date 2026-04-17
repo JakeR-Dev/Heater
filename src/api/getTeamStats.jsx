@@ -1,11 +1,9 @@
+import { buildSeasonYears } from "../helpers/buildSeasonYears";
+
 // get the current stats for a specific team
 export async function getTeamStats(clubId) {
   // build the season years (ex: 20252026)
-  const now = new Date();
-  const year = now.getFullYear();
-  const month = now.getMonth() + 1;
-  const seasonStartYear = month >= 7 ? year : year - 1;
-  const seasonSegment = `${seasonStartYear}${seasonStartYear + 1}`;
+  const seasonSegment = buildSeasonYears();
 
   // gameTypeId 2 = regular season
   const url = `/nhl-api/v1/club-stats/${clubId}/${seasonSegment}/2`;
@@ -22,4 +20,3 @@ export async function getTeamStats(clubId) {
     console.error('getTeamStats fetch error:', error);
   }
 }
-

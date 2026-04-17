@@ -7,11 +7,10 @@ export default async function handler(req, res) {
   }
 
   const url = new URL(req.url, `http://${req.headers.host}`);
-  const path = url.pathname.replace(/^\/api\/nhl\/?/, "");
-  const queryString = new URLSearchParams(url.search);
+  const path = url.pathname.replace(/^\/api\//, "");
+  const queryString = url.search;
 
-  const upstreamUrl =
-    "https://api-web.nhle.com/" + path + (queryString.toString() ? "?" + queryString.toString() : "");
+  const upstreamUrl = "https://api-web.nhle.com/" + path + queryString;
 
   try {
     const upstream = await fetch(upstreamUrl, {

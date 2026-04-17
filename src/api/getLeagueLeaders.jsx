@@ -1,4 +1,5 @@
 import { buildSeasonYears } from "../helpers/buildSeasonYears";
+import { buildApiUrl } from "../helpers/buildApiUrl";
 
 // get the current stats for league-wide leaders
 export async function getLeagueLeaders(category) {
@@ -12,7 +13,7 @@ export async function getLeagueLeaders(category) {
   }
 
   // return specific categories, limit to 20 players
-  const url = `/nhl-api/v1/skater-stats-leaders/${seasonSegment}/2?${params.toString()}`;
+  const url = buildApiUrl(`/v1/skater-stats-leaders/${seasonSegment}/2?${params.toString()}`);
   const response = await fetch(url, { method: 'GET' });
 
   if (!response.ok) {

@@ -1,6 +1,8 @@
+import { buildApiUrl } from "../helpers/buildApiUrl";
+
 // get the current stats for a specific team
 export async function getPlayerStats(playerId) {
-  const url = `/nhl-api/v1/player/${playerId}/landing`;
+  const url = buildApiUrl(`/v1/player/${playerId}/landing`);
   const response = await fetch(url, { method: 'GET' });
 
   if (!response.ok) {

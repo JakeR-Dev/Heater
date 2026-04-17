@@ -1,4 +1,5 @@
 import { buildSeasonYears } from "../helpers/buildSeasonYears";
+import { buildApiUrl } from "../helpers/buildApiUrl";
 
 // get the current stats for a specific team
 export async function getTeamStats(clubId) {
@@ -6,7 +7,7 @@ export async function getTeamStats(clubId) {
   const seasonSegment = buildSeasonYears();
 
   // gameTypeId 2 = regular season
-  const url = `/nhl-api/v1/club-stats/${clubId}/${seasonSegment}/2`;
+  const url = buildApiUrl(`/v1/club-stats/${clubId}/${seasonSegment}/2`);
   const response = await fetch(url, { method: 'GET' });
 
   if (!response.ok) {

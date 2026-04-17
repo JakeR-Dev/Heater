@@ -1,8 +1,10 @@
 export default async function handler(req, res) {
+  // Set CORS headers on all responses
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "GET,OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+
   if (req.method === "OPTIONS") {
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    res.setHeader("Access-Control-Allow-Methods", "GET,OPTIONS");
-    res.setHeader("Access-Control-Allow-Headers", "Content-Type");
     return res.status(204).end();
   }
 
@@ -20,14 +22,10 @@ export default async function handler(req, res) {
 
     const body = await upstream.text();
 
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    res.setHeader("Access-Control-Allow-Methods", "GET,OPTIONS");
-    res.setHeader("Access-Control-Allow-Headers", "Content-Type");
     res.setHeader("Content-Type", upstream.headers.get("content-type") || "application/json");
-
-    return res.status(upstream.status).send(body);
+    return res.status(upstream.status).end(body);
   } catch (error) {
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    return res.status(502).json({ error: "Proxy request failed" });
+    console.error("Proxy error:", error);
+    return res.status(502).end(JSON.stringify({ error: "Proxy request failed" }));
   }
 }

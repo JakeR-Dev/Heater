@@ -17,9 +17,4 @@ export default defineConfig({
       '/nhl-api': nhlApiProxy,
     },
   },
-  preview: {
-    proxy: {
-      '/nhl-api': nhlApiProxy,
-    },
-  },
 })

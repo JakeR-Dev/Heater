@@ -16,8 +16,6 @@ export async function getLeagueSniperPlayers(players) {
     })
   );
 
-  console.log('players:', players);
-
   // keep only players with at least 20 points, and 20 games played,
   // then rank by shooting percentage
   let snipers = [...players]

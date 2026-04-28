@@ -32,4 +32,9 @@ Each team displays three player category highlights:
 
 ## How it works
 
-The NHL API doesn't send CORS headers for browser requests, so all API calls are routed through a Vercel serverless function at `api/[[...slug]].js` which proxies requests to `https://api-web.nhle.com`. In development, Vite's dev server proxy handles this instead.
+The NHL API blocks direct browser requests with CORS, so the app uses a proxy.
+
+- In local development, requests go to `/nhl-api/...` and Vite proxies them to `https://api-web.nhle.com`.
+- In production, requests go to `/api/...` and Vercel routes them to `api/[...slug].js`, which forwards the request to `https://api-web.nhle.com`.
+
+`vercel.json` keeps this simple by routing `/api/*` to the serverless function and everything else to the app.

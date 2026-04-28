@@ -36,7 +36,7 @@ export const MostImpactful = ({ results, showLeagueLeaders }) => {
           {/* points per game weighted leaderboard */}
           <h3>Most Impactful</h3>
           <h5 className="mb-5 text-silver">Points Per Game Weighted</h5>
-          <div className="players grid grid-cols-2 md:grid-cols-3 gap-3 mb-6">
+          <div className="players grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-3 mb-6">
             {pointsPerGamePlayers.map(player => {
               const playerName = player?.firstName?.default + ' ' + player?.lastName?.default;
               const playerHeadshot = player?.headshot;

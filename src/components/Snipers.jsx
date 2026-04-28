@@ -43,7 +43,7 @@ export const Snipers = ({ results, showLeagueLeaders }) => {
           {/* snipers - shooting percentage leaderboard */}
           <h3>Snipers</h3>
           <h5 className="mb-5 text-silver">Highest Shooting Percentage This Season</h5>
-          <div className="players grid grid-cols-2 md:grid-cols-3 gap-3 mb-6">
+          <div className="players grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-3 mb-6">
             {sniperPlayers.map(player => {
               const playerId = player?.playerId ?? player?.id;
               const playerName = player?.firstName?.default + ' ' + player?.lastName?.default;

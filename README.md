@@ -18,6 +18,18 @@ npm run dev    # start the dev server
 npm run build  # build for production
 ```
 
+## Resources
+
+- [Unofficial NHL API Reference](https://github.com/Zmalski/NHL-API-Reference)
+
+## Highlights
+
+Each team displays three player category highlights:
+
+- **Most Impactful** — top players by points-per-game (weighted with plus-minus factored, relative to games played).
+- **Most Reliable** — players with the most average ice time this season (avg time on ice per game multiplied by the number of games played).
+- **Snipers** — highest shooting percentage among players with 20+ points and 20+ games played in current season.
+
 ## How it works
 
 The NHL API doesn't send CORS headers for browser requests, so all API calls are routed through a Vercel serverless function at `api/[[...slug]].js` which proxies requests to `https://api-web.nhle.com`. In development, Vite's dev server proxy handles this instead.

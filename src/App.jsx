@@ -26,13 +26,13 @@ function App() {
   }, [])
 
   return (
-    <div className="p-6 md:p-0 md:h-screen md:overflow-hidden">
-      <div className="grid grid-cols-1 md:grid-cols-[300px_minmax(0,1fr)] gap-4 md:h-full">
-        <div className="title p-0 md:p-8 md:sticky md:top-0 md:self-stretch bg-charcoal">
+    <div className="p-6 lg:p-0 lg:h-screen lg:overflow-hidden">
+      <div className="grid grid-cols-1 lg:grid-cols-[300px_minmax(0,1fr)] gap-4 md:h-full">
+        <div className="title p-4 lg:p-8 lg:sticky lg:top-0 lg:self-stretch bg-charcoal">
           <Title />
           <SearchForm setResults={setResults} setShowLeagueLeaders={setShowLeagueLeaders} />
         </div>
-        <div className="results py-8 md:mt-0 md:overflow-y-auto">
+        <div className="results py-8 lg:mt-0 lg:overflow-y-auto">
           <MostImpactful results={results} showLeagueLeaders={showLeagueLeaders} />
           <MostReliable results={results} showLeagueLeaders={showLeagueLeaders} />
           <Snipers results={results} showLeagueLeaders={showLeagueLeaders} />
